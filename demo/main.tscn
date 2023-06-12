@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://crvymdxqpi4uu"]
+
+[ext_resource type="Texture2D" uid="uid://c1sj0eecni33h" path="res://icon.svg" id="1_1tm7e"]
+
+[node name="Main" type="Node2D"]
+
+[node name="GDExample" type="GDExample" parent="."]
+amplitude = 100.862
+speed = 0.18
+position = Vector2(201.703, 194.632)
+texture = ExtResource("1_1tm7e")
+centered = false
