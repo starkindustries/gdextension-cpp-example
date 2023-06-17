@@ -1,6 +1,6 @@
 # Instructions
 
-1. do everything using WSL
+1. If on Windows, do everything using WSL + PowerShell
 
 2. checkout branch 4.0 for godot-cpp
 
