@@ -1,12 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://crvymdxqpi4uu"]
+[gd_scene load_steps=3 format=3 uid="uid://crvymdxqpi4uu"]
 
 [ext_resource type="Texture2D" uid="uid://c1sj0eecni33h" path="res://icon.svg" id="1_1tm7e"]
+[ext_resource type="Script" path="res://main.gd" id="1_ai24c"]
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_ai24c")
 
 [node name="GDExample" type="GDExample" parent="."]
-amplitude = 100.862
-speed = 0.18
-position = Vector2(201.703, 194.632)
+amplitude = 200.0
+speed = 0.87
+position = Vector2(293.533, 386.826)
 texture = ExtResource("1_1tm7e")
 centered = false
