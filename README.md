@@ -11,28 +11,22 @@ Clone the repo. Update git submodules:
 git submodule update --init
 ```
 
-WSL:
-```
-cd godot-cpp
-scons platform=windows -j4 custom_api_file=gdextension/extension_api.json
-cd ..
-```
-
 From the repo's main directory, run the following:
 ```
 scons platform=linux
 ``` 
 
-Replace `linux` in the command above with `macos` or `windows`. If you leave the platform blank, like below, `scons` will give helpful text showing valid values:
+Replace `linux` in the command above with your target operating system (e.g. `macos` or `windows`). 
+
+If you leave the platform blank, like below, `scons` will give helpful text showing valid values:
 
 ```
 $ scons platform=
 scons: Reading SConscript files ...
-
 scons: *** Invalid value for option platform: .  Valid values are: ('linux', 'macos', 'windows', 'android', 'ios', 'web')
 ```
 
-Important note for android, you will need to set an environment variable `ANDROID_NDK_ROOT` to the directory of your Android NDK. For example, for Mac and Linux:
+Important note for android: you will need to set an environment variable `ANDROID_NDK_ROOT` to the directory of your Android NDK. The NDK directory should contain the `build` and `toolchains` folders.
 ```
 export ANDROID_NDK_ROOT=~/Android/Sdk/ndk/26.1.10909125/
 ```
@@ -42,11 +36,15 @@ Now that the environment variable is set, run the `scons` command:
 scons platform=android
 ```
 
-Project file structure:
+Godot will now detect the built extension. Try creating a new node and search for `GDExample`:
+
+![screenshot](docs/screenshot.png)
+
+Project file structure for reference:
 ```
-gdextension_cpp_example/
+gdextension-cpp-example/
 |
-+--demo/                  # game example/demo to test the extension
++--demo/                  # sample game to test the extension
 |   |
 |   +--main.tscn
 |   |
@@ -54,7 +52,7 @@ gdextension_cpp_example/
 |       |
 |       +--gdexample.gdextension
 |
-+--godot-cpp/             # C++ bindings
++--godot-cpp/             # Godot C++ bindings
 |
 +--src/                   # source code of the extension we are building
 |   |
