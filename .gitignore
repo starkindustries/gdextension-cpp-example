@@ -5,10 +5,11 @@
 .sconsign.dblite
 demo/bin/*.dll
 *.os
+build/
+export_presets.cfg
 
 # Python
 venv
-
 
 # Godot auto generated files
 *.gen.*

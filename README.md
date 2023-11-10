@@ -1,38 +1,50 @@
-# Instructions
+# GDExtension C++ Example
 
-1. If on Windows, do everything using WSL + PowerShell
+This is an example C++ GDExtension based on the official documentation:
 
-2. checkout branch 4.0 for godot-cpp
+https://docs.godotengine.org/en/stable/tutorials/scripting/gdextension/gdextension_cpp_example.html
 
-PowerShell:
+# Build Instructions
+
+Clone the repo. Update git submodules:
 ```
-cd godot-cpp
-godot --dump-extension-api extension_api.json
-```
-
-WSL:
-```
-cd godot-cpp
-scons platform=windows -j4 custom_api_file=gdextension/extension_api.json
-cd ..
+git submodule update --init
 ```
 
-WSL, from gdextension_cpp_example directory:
+From the repo's main directory, run the following:
 ```
-scons platform=windows
+scons platform=linux
 ``` 
 
+Replace `linux` in the command above with your target operating system (e.g. `macos` or `windows`). 
+
+If you leave the platform blank, like below, `scons` will give helpful text showing valid values:
 
 ```
-demo/bin/libgdexample.windows.template_debug.x86_64.dll
+$ scons platform=
+scons: Reading SConscript files ...
+scons: *** Invalid value for option platform: .  Valid values are: ('linux', 'macos', 'windows', 'android', 'ios', 'web')
 ```
 
-
-file structure:
+Important note for android: you will need to set an environment variable `ANDROID_NDK_ROOT` to the directory of your Android NDK. The NDK directory should contain the `build` and `toolchains` folders.
 ```
-gdextension_cpp_example/
+export ANDROID_NDK_ROOT=~/Android/Sdk/ndk/26.1.10909125/
+```
+
+Now that the environment variable is set, run the `scons` command:
+```
+scons platform=android
+```
+
+Godot will now detect the built extension. Try creating a new node and search for `GDExample`:
+
+![screenshot](docs/screenshot.png)
+
+Project file structure for reference:
+```
+gdextension-cpp-example/
 |
-+--demo/                  # game example/demo to test the extension
++--demo/                  # sample game to test the extension
 |   |
 |   +--main.tscn
 |   |
@@ -40,7 +52,7 @@ gdextension_cpp_example/
 |       |
 |       +--gdexample.gdextension
 |
-+--godot-cpp/             # C++ bindings
++--godot-cpp/             # Godot C++ bindings
 |
 +--src/                   # source code of the extension we are building
 |   |
